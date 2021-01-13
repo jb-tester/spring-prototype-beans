@@ -19,7 +19,7 @@ public class RunMe {
         Bean2 bean2_1 = (Bean2) ctx.getBean("prototypeBean21",bean1, "foo");
         Bean2 bean2_2 = (Bean2) ctx.getBean("prototypeBean22",bean1, "bar", 100);
         
-        
+        // not unique bean error is not reported here: uncomment to test
        // Bean3 bean3_1 = ctx.getBean(Bean3.class, "foo","bar");
         Bean3 bean3_2 = ctx.getBean(Bean3.class, "foo","bar","boo");
         
@@ -29,7 +29,11 @@ public class RunMe {
         integerList.add(3);
         PrototypeComponent1 component11 = ctx.getBean(PrototypeComponent1.class,"bar", integerList, 100);
 
-
+        // singleton bean without unsatisfied parameters test:
+        // the getBean() method is incorrectly used to back the arguments
+        // uncomment this line and the @Component annotation for  SingletonComponent1 class to test
+   //     SingletonComponent1 singletonComponent1 = (SingletonComponent1) ctx.getBean("singletonComponent1", "aaa","bbb");
+        
         System.out.println(bean2_1.display());
         System.out.println(bean2_2.display());
         System.out.println(bean3_2.display());
