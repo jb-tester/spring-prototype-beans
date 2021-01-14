@@ -31,8 +31,9 @@ public class RunMe {
 
         // singleton bean without unsatisfied parameters test:
         // the getBean() method is incorrectly used to back the arguments
-        // uncomment this line and the @Component annotation for  SingletonComponent1 class to test
-   //     SingletonComponent1 singletonComponent1 = (SingletonComponent1) ctx.getBean("singletonComponent1", "aaa","bbb");
+        // uncomment this line and the @Bean annotation for  
+        // com.mytests.spring.prototypesTest.beanfactoryGetBean_test.MyConfig.singletonBean() method to test
+       // Bean4 singletonbean4 = (Bean4) ctx.getBean("singletonBean", "aaa","bbb");
         
         System.out.println(bean2_1.display());
         System.out.println(bean2_2.display());

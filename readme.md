@@ -19,25 +19,18 @@ IDEA treats this case correctly.
 
 However, if the considered bean has the singleton scope, the autowiring error should be shown for it, if no autowiring candidates are found, and the BeanFactory#getBean() method should not be considered.
 
-Actually IDEA doesn't show errors in this case. For example, the following component
+Actually IDEA doesn't show errors in this case. For example, the following bean
 
 ```
-@Component // @Scope("prototype")
-public class PrototypeComponent1 {
-    
-    String str1;
-    List<Integer> integerList;
-    int someInt;
-    public PrototypeComponent1(String str1, List<Integer> integerList, int someInt) {
-        this.str1 = str1;
-        this.integerList = integerList;
-        this.someInt = someInt;
+    @Bean 
+    public Bean4 singletonBean(String str1, String str2){
+        return new Bean4(str1,str2);
     }
 ```
 displays no errors if it is instantiated as
 ```
 ApplicationContext ctx = new AnnotationConfigApplicationContext(MyConfig.class);
-PrototypeComponent1 component11 = ctx.getBean(PrototypeComponent1.class,"bar", integerList, 100);
+Bean4 singletonbean4 = (Bean4) ctx.getBean("singletonBean", "aaa","bbb");
 ```
 and the gutter navigation icon for its constructor navigates to this method. 
 But this code will fail in runtime.

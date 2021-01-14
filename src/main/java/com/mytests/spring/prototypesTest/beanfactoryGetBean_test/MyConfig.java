@@ -39,4 +39,10 @@ public class MyConfig {
     public Bean3 prototypeBean32(String str1, String str2){
         return new Bean3(str1,str2);
     }
+
+    //@Bean 
+    public Bean4 singletonBean(String str1, String str2){
+        return new Bean4(str1,str2);
+    }
+    
 }
